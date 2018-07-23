@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">InventusPower</string>
+
+    <string-array name= "names">
+        <item> Error 1 </item>
+        <item> Error 2 </item>
+        <item> Error 3 </item>
+        <item> Error 4 </item>
+        <item> Custom </item>
+
+    </string-array>
 </resources>

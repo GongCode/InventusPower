@@ -26,7 +26,7 @@ public class Main2Activity extends AppCompatActivity {
 
 
 
-        Button restart_button = (Button) findViewById(R.id.restart_button);
+        Button restart_button = (Button) findViewById(R.id.exit_button);
         restart_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
