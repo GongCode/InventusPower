@@ -4,11 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class Main5Activity extends AppCompatActivity {
+
+    private Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,17 +24,47 @@ public class Main5Activity extends AppCompatActivity {
 
         Button exit_button = (Button) findViewById(R.id.exit_button);
 
+        final TextView warning_text = (TextView) findViewById(R.id.warning_text);
+
+        warning_text.setVisibility(View.GONE);
+
+
+
+        spinner = (Spinner) findViewById(R.id.ErrorCode);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+
+                //Toast.makeText(getBaseContext(), parent.getItemAtPosition(position) + " selected", Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(Main5Activity.this, spinner.getSelectedItem().toString() + " selected", Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                warning_text.setVisibility(View.VISIBLE);
+                Toast.makeText(Main5Activity.this, "okfoselected", Toast.LENGTH_SHORT).show();
 
 
 
 
-        Spinner errorCode = (Spinner) findViewById(R.id.ErrorCode);
+            }
+        });
+
+
+
+
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(Main5Activity.this,
-                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.names));
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.error_codes));
 
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        errorCode.setAdapter(myAdapter);
+        spinner.setAdapter(myAdapter);
+
+
 
 
 
@@ -55,6 +90,9 @@ public class Main5Activity extends AppCompatActivity {
         });
 
     }
+
+
+
 
     private void launchFinish() {
 

@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">InventusPower</string>
 
-    <string-array name= "names">
+    <string-array name= "error_codes">
+        <item> Make a selection </item>
         <item> Error 1 </item>
         <item> Error 2 </item>
         <item> Error 3 </item>
