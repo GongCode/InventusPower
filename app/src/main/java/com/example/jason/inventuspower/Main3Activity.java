@@ -36,20 +36,20 @@ public class Main3Activity extends AppCompatActivity {
 
         TextView reworkView = (TextView) findViewById(R.id.rework_count);
 
-        reworkView.setText(Data.reworkCount + "");
+        reworkView.setText("" + Data.reworkCount);
 
         TextView cView = (TextView) findViewById(R.id.total_count);
 
         int total_count = Data.failCount + Data.passCount + Data.reworkCount;
 
 
-        cView.setText(String.valueOf(total_count));
+        cView.setText("Total: " + total_count);
 
         TextView current_date = (TextView) findViewById(R.id.time_text);
 
         calendarDate = Calendar.getInstance();
 
-        simpleDateFormat = new SimpleDateFormat("HH:mm:ss MM/dd/yyyy");
+        simpleDateFormat = new SimpleDateFormat("H:mm aa MM/dd/yyyy");
 
         Date = simpleDateFormat.format(calendarDate.getTime());
 
@@ -60,7 +60,7 @@ public class Main3Activity extends AppCompatActivity {
 
 
 
-        Button restart_button = (Button) findViewById(R.id.exit_button);
+        Button restart_button = (Button) findViewById(R.id.fin_button);
         restart_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 

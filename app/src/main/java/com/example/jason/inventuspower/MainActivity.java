@@ -33,11 +33,10 @@ public class MainActivity extends AppCompatActivity {
 
         calendarDate = Calendar.getInstance();
 
-        simpleDateFormat = new SimpleDateFormat("HH:mm:ss MM/dd/yyyy");
+        simpleDateFormat = new SimpleDateFormat("H:mm aa  MM/dd/yyyy");
 
         Date = simpleDateFormat.format(calendarDate.getTime());
 
-        Data.date = Date;
 
         current_date.setText(Date);
 

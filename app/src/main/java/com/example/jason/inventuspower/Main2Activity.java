@@ -43,11 +43,10 @@ public class Main2Activity extends AppCompatActivity {
 
         calendarDate = Calendar.getInstance();
 
-        simpleDateFormat = new SimpleDateFormat("HH:mm:ss MM/dd/yyyy");
+        simpleDateFormat = new SimpleDateFormat("H:mm aa");
 
         Date = simpleDateFormat.format(calendarDate.getTime());
 
-        Data.date = Date;
 
         current_date.setText(Date);
 
@@ -59,11 +58,11 @@ public class Main2Activity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (Data.selected_option == 0) {
-                    Toast.makeText(Main2Activity.this, "Nothing selected", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Main2Activity.this, "Invalid Response", Toast.LENGTH_SHORT).show();
                 }else {
 
-
                     continueView();
+                    Data.selected_option = 0;
                 }
                 }
 
@@ -71,7 +70,7 @@ public class Main2Activity extends AppCompatActivity {
 
 
 
-        Button restart_button = (Button) findViewById(R.id.exit_button);
+        Button restart_button = (Button) findViewById(R.id.fin_button);
         restart_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -84,11 +83,15 @@ public class Main2Activity extends AppCompatActivity {
 
 
 
+
+
         spinner = (Spinner) findViewById(R.id.spinner);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+
 
                 if (spinner.getSelectedItemId()  == 0) {
                     warning_text.setVisibility(View.VISIBLE);
@@ -96,7 +99,7 @@ public class Main2Activity extends AppCompatActivity {
                     custom_text.setVisibility(View.GONE);
 
                 } else if (spinner.getSelectedItemId() == 5) {
-
+                    Toast.makeText(Main2Activity.this, "Please Complete", Toast.LENGTH_SHORT).show();
                     custom_text.setVisibility(View.VISIBLE);
                     warning_text.setVisibility(View.GONE);
 
@@ -122,7 +125,6 @@ public class Main2Activity extends AppCompatActivity {
 
             }
         });
-
 
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(Main2Activity.this,

@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -21,6 +23,8 @@ public class Main4Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
 
+        final EditText text_box = (EditText) findViewById(R.id.editText);
+
         Button details_button = (Button) findViewById(R.id.details_button);
 
 
@@ -32,7 +36,7 @@ public class Main4Activity extends AppCompatActivity {
 
         calendarDate = Calendar.getInstance();
 
-        simpleDateFormat = new SimpleDateFormat("HH:mm:ss MM/dd/yyyy");
+        simpleDateFormat = new SimpleDateFormat("H:mm aa");
 
         Date = simpleDateFormat.format(calendarDate.getTime());
 
@@ -43,7 +47,7 @@ public class Main4Activity extends AppCompatActivity {
 
         TextView dateView = (TextView) findViewById(R.id.time_text);
 
-        Button exit_button = (Button) findViewById(R.id.exit_button);
+        Button finish_button = (Button) findViewById(R.id.fin_button);
 
         Button back_button = (Button) findViewById(R.id.back_button);
 
@@ -66,11 +70,19 @@ public class Main4Activity extends AppCompatActivity {
 
         });
 
-        exit_button.setOnClickListener(new View.OnClickListener() {
+        finish_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
 
-                launchRestart();
+                if (text_box.getText().toString().isEmpty()){
+                    Toast.makeText(Main4Activity.this, "Invalid Number", Toast.LENGTH_SHORT).show();
+                }else if (text_box.getText().toString() == "") {
+                    Toast.makeText(Main4Activity.this, "Good Game", Toast.LENGTH_SHORT).show();
+                }else{
+
+
+                    launchFinish();
+                }
 
 
             }
@@ -80,8 +92,16 @@ public class Main4Activity extends AppCompatActivity {
         details_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
+                if (text_box.getText().toString().isEmpty()){
+                    Toast.makeText(Main4Activity.this, "Invalid Number", Toast.LENGTH_SHORT).show();
+                }else {
 
-                launchFail();
+
+                    launchFail();
+                }
+
+
+
 
 
             }
@@ -89,7 +109,7 @@ public class Main4Activity extends AppCompatActivity {
         });
     }
 
-    private void launchRestart() {
+    private void launchFinish() {
 
         Intent intent = new Intent(this, Main2Activity.class);
         startActivity(intent);

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,13 +23,13 @@ public class Main5Activity extends AppCompatActivity {
 
         Button finish_button = (Button) findViewById(R.id.finish_button);
 
-        Button exit_button = (Button) findViewById(R.id.exit_button);
+        Button exit_button = (Button) findViewById(R.id.fin_button);
 
         final TextView warning_text = (TextView) findViewById(R.id.warning_text);
 
         warning_text.setVisibility(View.GONE);
 
-        final TextView custom_text = (TextView) findViewById(R.id.custom_text);
+        final EditText custom_text = (EditText) findViewById(R.id.custom_text);
 
         custom_text.setVisibility(View.GONE);
 
@@ -46,15 +47,29 @@ public class Main5Activity extends AppCompatActivity {
 
                 if (spinner.getSelectedItemId()  == 0) {
                     warning_text.setVisibility(View.VISIBLE);
+                    custom_text.setVisibility(View.GONE);
+                    Data.selected_option = 0;
 
                 } else if (spinner.getSelectedItemId() == 5) {
 
                     custom_text.setVisibility(View.VISIBLE);
+                    warning_text.setVisibility(View.GONE);
+                    Toast.makeText(Main5Activity.this, "Please Complete", Toast.LENGTH_SHORT).show();
+                    Data.selected_option = 1;
 
+                    /*if (custom_text.getText().toString() == "nice"){
+                        Data.selected_option = 1;
 
+                    }else if (custom_text.getText().toString().isEmpty() == false) {
+                        Data.selected_option = 0;
+
+                    }*/
 
                 } else {
 
+                    custom_text.setVisibility(View.GONE);
+                    warning_text.setVisibility(View.GONE);
+                    Data.selected_option = 1;
 
                     //Toast.makeText(getBaseContext(), parent.getItemAtPosition(position) + " selected", Toast.LENGTH_SHORT).show();
 
@@ -103,7 +118,12 @@ public class Main5Activity extends AppCompatActivity {
         finish_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                launchFinish();
+                if (Data.selected_option == 0) {
+                    Toast.makeText(Main5Activity.this, "Invalid Response", Toast.LENGTH_SHORT).show();
+                }else {
+                    Data.selected_option = 0;
+                    launchFinish();
+                }
 
 
             }
