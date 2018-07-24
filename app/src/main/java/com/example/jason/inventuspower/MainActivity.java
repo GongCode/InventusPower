@@ -18,6 +18,10 @@ public class MainActivity extends AppCompatActivity {
     String Date;
     SimpleDateFormat simpleDateFormat;
 
+    View view;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,13 @@ public class MainActivity extends AppCompatActivity {
         simpleDateFormat = new SimpleDateFormat("H:mm aa  MM/dd/yyyy");
 
         Date = simpleDateFormat.format(calendarDate.getTime());
+
+        view = this.getWindow().getDecorView();
+
+        //view.setBackgroundResource(R.color.background);
+
+
+
 
 
         current_date.setText(Date);

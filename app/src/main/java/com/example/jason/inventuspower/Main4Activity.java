@@ -58,7 +58,6 @@ public class Main4Activity extends AppCompatActivity {
         }
 
 
-
         back_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
