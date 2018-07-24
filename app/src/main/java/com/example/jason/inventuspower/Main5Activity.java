@@ -28,6 +28,14 @@ public class Main5Activity extends AppCompatActivity {
 
         warning_text.setVisibility(View.GONE);
 
+        final TextView custom_text = (TextView) findViewById(R.id.custom_text);
+
+        custom_text.setVisibility(View.GONE);
+
+
+
+
+
 
 
         spinner = (Spinner) findViewById(R.id.ErrorCode);
@@ -36,30 +44,43 @@ public class Main5Activity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+                if (spinner.getSelectedItemId()  == 0) {
+                    warning_text.setVisibility(View.VISIBLE);
 
-                //Toast.makeText(getBaseContext(), parent.getItemAtPosition(position) + " selected", Toast.LENGTH_SHORT).show();
+                } else if (spinner.getSelectedItemId() == 5) {
 
-                Toast.makeText(Main5Activity.this, spinner.getSelectedItem().toString() + " selected", Toast.LENGTH_SHORT).show();
+                    custom_text.setVisibility(View.VISIBLE);
 
+
+
+                } else {
+
+
+                    //Toast.makeText(getBaseContext(), parent.getItemAtPosition(position) + " selected", Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(Main5Activity.this, spinner.getSelectedItem().toString() + " selected", Toast.LENGTH_SHORT).show();
+
+                }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                warning_text.setVisibility(View.VISIBLE);
-                Toast.makeText(Main5Activity.this, "okfoselected", Toast.LENGTH_SHORT).show();
-
 
 
 
             }
         });
 
+        //List<String> codes = new ArrayList<>();
+        //codes.add(0, "juf");
+       // codes.add("dd");
+
 
 
 
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(Main5Activity.this,
-                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.error_codes));
+               android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.error_codes));
 
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(myAdapter);

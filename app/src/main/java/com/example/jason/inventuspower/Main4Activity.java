@@ -7,7 +7,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class Main4Activity extends AppCompatActivity {
+
+    Calendar calendarDate;
+    String Date;
+    SimpleDateFormat simpleDateFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +27,18 @@ public class Main4Activity extends AppCompatActivity {
         TextView passView = (TextView) findViewById(R.id.statusID);
 
         passView.setText(Data.status);
+
+        TextView current_date = (TextView) findViewById(R.id.time_text);
+
+        calendarDate = Calendar.getInstance();
+
+        simpleDateFormat = new SimpleDateFormat("HH:mm:ss MM/dd/yyyy");
+
+        Date = simpleDateFormat.format(calendarDate.getTime());
+
+        Data.date = Date;
+
+        current_date.setText(Date);
 
 
         TextView dateView = (TextView) findViewById(R.id.time_text);

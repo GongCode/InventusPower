@@ -7,6 +7,7 @@ public class Data {
     static String status = "Default";
     static String date = "Default Date";
     static int failStatus = 0;
+    static int selected_option = 0;
 
 
 

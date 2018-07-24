@@ -10,4 +10,14 @@
         <item> Custom </item>
 
     </string-array>
+
+    <string-array name= "lines">
+        <item> Make a selection </item>
+        <item> line 1 </item>
+        <item> line 2 </item>
+        <item> line 3 </item>
+        <item> line 4 </item>
+        <item> Custom </item>
+
+    </string-array>
 </resources>
